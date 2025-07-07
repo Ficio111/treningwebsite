@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Treningowy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard">
+    <h2>Witaj, <span id="loggedUser"></span>!</h2>
+    <button onclick="logout()">Wyloguj</button>
+
+    <section>
+      <h3>Dodaj Ćwiczenie</h3>
+      <input type="text" id="exercise" placeholder="Nazwa ćwiczenia" />
+      <input type="number" id="series" placeholder="Serie" />
+      <input type="number" id="reps" placeholder="Powtórzenia" />
+      <input type="number" id="weight" placeholder="Ciężar (kg)" />
+      <select id="difficulty">
+        <option value="łatwo">Łatwo</option>
+        <option value="średnio">Średnio</option>
+        <option value="ciężko">Ciężko</option>
+      </select>
+      <textarea id="notes" placeholder="Uwagi (opcjonalnie)"></textarea>
+      <button onclick="addExercise()">Dodaj Ćwiczenie</button>
+    </section>
+
+    <section>
+      <h3>Twój Trening</h3>
+      <div id="trainingList"></div>
+    </section>
+
+    <section>
+      <h3>Moje Statystyki</h3>
+      <input type="number" id="weightStat" placeholder="Waga (kg)" />
+      <input type="number" id="fatStat" placeholder="Tłuszcz (%)" />
+      <button onclick="saveStats()">Zapisz</button>
+      <div id="savedStats"></div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
