@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Logowanie</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trening - Logowanie</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="login-container">
-    <h2>Logowanie / Rejestracja</h2>
-    <input type="text" id="username" placeholder="Nazwa użytkownika" />
-    <input type="password" id="password" placeholder="Hasło" />
-    <button onclick="register()">Zarejestruj</button>
-    <button onclick="login()">Zaloguj</button>
-    <p id="msg"></p>
+  <div class="container">
+    <h1>Logowanie</h1>
+    <input type="text" id="loginUsername" placeholder="Nazwa użytkownika">
+    <input type="password" id="loginPassword" placeholder="Hasło">
+    <button onclick="login()">Zaloguj się</button>
+
+    <h2>Rejestracja</h2>
+    <input type="text" id="registerUsername" placeholder="Nazwa użytkownika">
+    <input type="password" id="registerPassword" placeholder="Hasło">
+    <button onclick="register()">Zarejestruj się</button>
   </div>
 
-  <script src="app.js"></script>
+  <script>
+    function register() {
+      const user = document.getElementById("registerUsername").value;
+      const pass = document.getElementById("registerPassword").value;
+
+      if (!user || !pass) return alert("Wypełnij wszystkie pola!");
+      if (localStorage.getItem("user_" + user)) return alert("Użytkownik już istnieje!");
+
+      const data = { password: pass, training: {}, stats: {} };
+      localStorage.setItem("user_" + user, JSON.stringify(data));
+      alert("Zarejestrowano!");
+    }
+
+    function login() {
+      const user = document.getElementById("loginUsername").value;
+      const pass = document.getElementById("loginPassword").value;
+
+      const data = JSON.parse(localStorage.getItem("user_" + user));
+      if (!data || data.password !== pass) {
+        alert("Nieprawidłowy login lub hasło!");
+        return;
+      }
+
+      localStorage.setItem("loggedIn", user);
+      window.location.href = "dashboard.html";
+    }
+  </script>
 </body>
 </html>
