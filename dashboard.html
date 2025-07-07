@@ -1,43 +1,40 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel Treningowy</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="dashboard">
-    <h2>Witaj, <span id="loggedUser"></span>!</h2>
+  <div class="container">
+    <h1>Panel Treningowy</h1>
     <button onclick="logout()">Wyloguj</button>
 
-    <section>
-      <h3>Dodaj Ćwiczenie</h3>
-      <input type="text" id="exercise" placeholder="Nazwa ćwiczenia" />
-      <input type="number" id="series" placeholder="Serie" />
-      <input type="number" id="reps" placeholder="Powtórzenia" />
-      <input type="number" id="weight" placeholder="Ciężar (kg)" />
-      <select id="difficulty">
-        <option value="łatwo">Łatwo</option>
-        <option value="średnio">Średnio</option>
-        <option value="ciężko">Ciężko</option>
-      </select>
-      <textarea id="notes" placeholder="Uwagi (opcjonalnie)"></textarea>
-      <button onclick="addExercise()">Dodaj Ćwiczenie</button>
-    </section>
+    <h2>Wybierz dzień</h2>
+    <div class="calendar" id="calendar"></div>
 
-    <section>
-      <h3>Twój Trening</h3>
-      <div id="trainingList"></div>
-    </section>
+    <h2>Dodaj Ćwiczenie</h2>
+    <input type="text" id="exercise" placeholder="Ćwiczenie">
+    <input type="number" id="series" placeholder="Serie">
+    <input type="number" id="reps" placeholder="Powtórzenia">
+    <input type="number" id="weight" placeholder="Ciężar (kg)">
+    <select id="difficulty">
+      <option value="łatwo">Łatwo</option>
+      <option value="średnio">Średnio</option>
+      <option value="ciężko">Ciężko</option>
+    </select>
+    <textarea id="notes" placeholder="Uwagi (opcjonalnie)"></textarea>
+    <button onclick="addExercise()">Dodaj Ćwiczenie</button>
 
-    <section>
-      <h3>Moje Statystyki</h3>
-      <input type="number" id="weightStat" placeholder="Waga (kg)" />
-      <input type="number" id="fatStat" placeholder="Tłuszcz (%)" />
-      <button onclick="saveStats()">Zapisz</button>
-      <div id="savedStats"></div>
-    </section>
+    <h2>Treningi</h2>
+    <div id="trainingList"></div>
+
+    <h2>Moje Statystyki</h2>
+    <input type="number" id="weightStat" placeholder="Waga (kg)">
+    <input type="number" id="fatStat" placeholder="Tłuszcz (%)">
+    <button onclick="saveStats()">Zapisz</button>
+    <div id="savedStats"></div>
   </div>
 
   <script src="app.js"></script>
